@@ -1,0 +1,5 @@
+--Short Description---
+An app for Muslims to keep track of prayer times from their selected masjid.
+
+---Full Description---
+Muslims Path is the ultimate app for the modern Muslim. With our state-of-the-art technology, you can effortlessly keep track of prayer times from your selected masjid, ensuring you never miss a prayer again. But that's not all! Our app also features a qibla direction compass to help you locate the direction of the Kaaba, and a nearby masjid finder to help you locate the nearest masjid in your area. And the best part? We're constantly updating our app with exciting new features to enhance your spiritual journey. Download Muslims Path today and take the first step towards a more connected and fulfilling Islamic lifestyle.
