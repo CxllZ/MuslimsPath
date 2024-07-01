@@ -2,8 +2,9 @@
 // https://github.com/rahulhaque/compass-react-native-expo
 
 import React, { useState, useEffect } from 'react';
-import { Image, View, Text, Dimensions } from 'react-native';
+import { Image, View, Text, Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
 import { Grid, Col, Row } from 'react-native-easy-grid';
+import { MaterialCommunityIcons } from 'react-native-vector-icons';
 import { Magnetometer } from 'expo-sensors';
 import * as Location from 'expo-location';
 
@@ -177,6 +178,11 @@ export default Qibla = ({navigation}) => {
         </Col>
       </Row>
 
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("QiblaOnboardingScreen")} >
+          <MaterialCommunityIcons name="progress-question" color={"#66c7aa"} size={40}/>
+          <Text style={{textAlign: 'left', color: "#66c7aa"}}>Calibration{"\n"}Help</Text>
+      </TouchableOpacity>
+
       <Row style={{ alignItems: 'center' }} size={.1}>
         <Col style={{ alignItems: 'center' }}>
           <View style={{ position: 'absolute', width: width, alignItems: 'center', top: -15 }}>
@@ -215,3 +221,20 @@ export default Qibla = ({navigation}) => {
     </Grid>
   );
 }
+
+const styles = StyleSheet.create({
+  image: {
+      tintColor: "#66c7aa",
+      width: 35,
+      height: 35
+  },
+  button: {
+      alignSelf: 'flex-end',
+      position: 'absolute',
+      top: 30,
+      left: 5,
+      borderRadius: 10,
+      padding: 5,
+      backgroundColor: 'rgba(255, 255, 255, 0.15)',
+  }
+});

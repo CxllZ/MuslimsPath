@@ -24,8 +24,8 @@ function HomeStackScreen() {
 function QiblaStackScreen() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="QiblaOnboardingScreen" component={QiblaOnboardingScreen} options={{ headerShown: false}}/>
-      <Stack.Screen name="realQibla" component={Qibla} options={{ headerBackTitle: 'Help', headerTintColor: "#fff", headerShown: true, headerTransparent: true, headerTitleStyle: { color: '#002331'}}}/>
+      <Stack.Screen name="realQibla" component={Qibla} options={{ headerShown: false }}/>
+      <Stack.Screen name="QiblaOnboardingScreen" component={QiblaOnboardingScreen} options={{ headerBackTitle: 'Back', headerTintColor: "#fff", headerShown: true, headerTransparent: true, headerTitleStyle: { color: 'white'}, headerTitle: "Help Page"}}/>
     </Stack.Navigator>
   )
 }
