@@ -33,3 +33,9 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# OWN ONES
+Other_Images/
+description.txt
+win_git_uploader.bat
+mac_git_uploader.sh

@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Muslims Path",
-    "slug": "muslims-path",
-    "version": "1.0.0",
+    "name": "MuslimsPath",
+    "slug": "MuslimsPath",
+    "version": "1.0.2",
     "splash": {
       "image": "./assets/splash.png",
       "backgroundColor": "#66c7aa",
@@ -11,13 +11,12 @@
     "icon": "./assets/icon.png",
     "extra": {
       "eas": {
-        "projectId": "8d3e79e1-2e7c-4cbb-ac53-f8194828cd83"
+        "projectId": "95d1026a-7dc4-49c9-bc77-6073ae19ff9b"
       }
     },
     "android": {
-      "versionCode": 1,
-      "package": "com.path.muslims"
-    },
-    "owner": "dawoodindahood"
+      "versionCode": 3,
+      "package": "com.dawoodindahood.MuslimsPath"
+    }
   }
 }
