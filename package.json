@@ -16,7 +16,7 @@
     "@react-navigation/native-stack": "^6.9.26",
     "@react-navigation/stack": "^6.3.29",
     "axios": "^1.7.2",
-    "expo": "~51.0.17",
+    "expo": "^51.0.17",
     "expo-location": "~17.0.1",
     "expo-notifications": "^0.28.9",
     "expo-sensors": "~13.0.9",
@@ -29,7 +29,6 @@
     "react-native-easy-grid": "^0.2.2",
     "react-native-gesture-handler": "~2.16.1",
     "react-native-maps": "1.14.0",
-    "react-native-onboarding-swiper": "^1.2.0",
     "react-native-reanimated-table": "^0.0.2"
   },
   "devDependencies": {

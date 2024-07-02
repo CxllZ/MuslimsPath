@@ -2,6 +2,14 @@
   "expo": {
     "name": "MuslimsPath",
     "slug": "MuslimsPath",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "extra": {
+      "eas": {
+        "projectId": "95d1026a-7dc4-49c9-bc77-6073ae19ff9b"
+      }
+    },
+    "android": {
+      "package": "com.dawoodindahood.MuslimsPath"
+    }
   }
 }
