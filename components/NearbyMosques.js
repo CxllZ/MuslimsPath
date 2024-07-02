@@ -20,7 +20,7 @@ const NearbyMosques = ({navigation}) => {
     })();
   }, []);
 
-  const markerData = require('../assets/mosques.json')
+  const markerData = require('./mosques.json')
 
   return (
     <>

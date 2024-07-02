@@ -3,6 +3,11 @@
     "name": "MuslimsPath",
     "slug": "MuslimsPath",
     "version": "1.0.0",
+    "splash": {
+      "image": "./assets/splash.jpg",
+      "resizeMode": "cover"
+    },
+    "icon": "./assets/icon.jpg",
     "extra": {
       "eas": {
         "projectId": "95d1026a-7dc4-49c9-bc77-6073ae19ff9b"
