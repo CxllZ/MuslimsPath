@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, ActivityIndicator, View  } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import * as Location from 'expo-location';
 
 const NearbyMosques = ({navigation}) => {
@@ -25,6 +25,7 @@ const NearbyMosques = ({navigation}) => {
   return (
     <>
     {location ? (<MapView
+                  provider={PROVIDER_GOOGLE}
                   style={styles.map}
                   showsUserLocation={true}
                   initialRegion={{
@@ -35,7 +36,7 @@ const NearbyMosques = ({navigation}) => {
                   }}>
 
                   {markerData.map((marker, counter) => (
-                    <Marker key={counter+1} coordinate={marker.coordinates} title={marker.title}/>
+                    <Marker key={counter+1} coordinate={{latitude: Number(marker.coordinates.latitude), longitude: Number(marker.coordinates.longitude)}} title={marker.title}/>
                   ))}
                   </MapView>)  : 
                   <View style={{backgroundColor: "#002331", justifyContent: 'center', alignItems: 'center', flex: 1}}>

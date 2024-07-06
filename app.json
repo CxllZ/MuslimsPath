@@ -16,7 +16,12 @@
     },
     "android": {
       "versionCode": 1,
-      "package": "com.path.muslims"
+      "package": "com.path.muslims",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyClF0ZGJjEPwWXXJ4kmL0yIj5Hc3aiodGs"
+        }
+      }
     },
     "owner": "dawoodindahood"
   }
