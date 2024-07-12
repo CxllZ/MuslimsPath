@@ -49,15 +49,27 @@ const Settings = ({ navigation }) => {
                         "https://go2masjid.com/api/papi/loc_getcity.php?name="+selectedItem
                         ).then(function(response){
                             const mosques = [];
-                            const amount = response.data.length;
-                    
-                            try {
-                                for(var i = 0; i < amount; i++){
-                                    mosques.push(response.data[i].masjidname);
+
+                            console.log(response.data.length)
+                            
+                            while (true) {
+                                try {
+                                    var amount = response.data.length;
+                                } catch (err) {
+                                    console.log(err)
                                 }
-                                setMosques(mosques);
-                            } catch(err) {
-                                console.log(err)
+                                
+                                if (amount != undefined) {
+                                    try {
+                                        for(var i = 0; i < amount; i++){
+                                            mosques.push(response.data[i].masjidname);
+                                        }
+                                        setMosques(mosques);
+                                    } catch(err) {
+                                        console.log(err)
+                                    }
+                                    break
+                                }
                             }
                         }
                     )
