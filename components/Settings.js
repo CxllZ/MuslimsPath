@@ -11,6 +11,7 @@ const Settings = ({ navigation }) => {
     const [ mosques1, setMosques] = useState();
     const [ disabledDropdown, setDisableDropdown] = useState('none');
     const [ notifPerms, setNotifPerms] = useState();
+    const [ update, setUpdate ] = useState()
 
     async function checkNotifPerms() {
         const { status } = await Permissions.requestPermissionsAsync(Permissions.NOTIFICATIONS);
@@ -45,12 +46,12 @@ const Settings = ({ navigation }) => {
                         }
                     }
 
-                    axios.get(
-                        "https://go2masjid.com/api/papi/loc_getcity.php?name="+selectedItem
-                        ).then(function(response){
+                    axios.get("https://go2masjid.com/api/papi/loc_getcity.php?name="+selectedItem)
+                    .then((response) => {
                             const mosques = [];
 
                             console.log(response.data.length)
+                            setDisableDropdown("");
                             
                             while (true) {
                                 try {
@@ -74,7 +75,6 @@ const Settings = ({ navigation }) => {
                         }
                     )
                     saveCity();
-                    setDisableDropdown("");
                 }}
             />
 
