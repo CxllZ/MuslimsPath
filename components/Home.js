@@ -142,10 +142,12 @@ const Home = ({ navigation }) => {
     }
 
     useEffect(() => {
+        Notifications.requestPermissionsAsync()
         const asynchronous = async () => {
             if (prayerTimes3 !== undefined) {
                 try {
                     await Notifications.cancelAllScheduledNotificationsAsync()
+                    await Notifications.dismissAllNotificationsAsync()
                     console.log('All pending notifications have been canceled.');
                 } catch (error) {
                     console.error('Error canceling notifications:', error);
@@ -160,7 +162,7 @@ const Home = ({ navigation }) => {
     async function scheduleLocalNotification() {
         const { status } = await Permissions.requestPermissionsAsync(Permissions.NOTIFICATIONS);
         if (status !== 'granted') {
-            console.log('Permission to schedule local notifications not granted');
+            console.log('Permission to schedule notifications not granted');
             return;
         }
         
@@ -210,7 +212,7 @@ const Home = ({ navigation }) => {
                 //  FAJAR START TIME
                 let fajarStart = {
                     content: {
-                        title: 'Fajar Start Time',
+                        title: 'Fajar Start Time At ' + mosqueAddr,
                         body: 'Fajar has started at ' + time[0][0] + '.',
                         sound: 'default',
                     },
@@ -225,7 +227,7 @@ const Home = ({ navigation }) => {
                 //  FAJAR JAMAAT TIME
                 let fajarJamaat = {
                     content: {
-                        title: 'Fajar Jamaat Time',
+                        title: 'Fajar Jamaat Time At ' + mosqueAddr,
                         body: 'Fajar jamaat has started at ' + time[0][1] + '.',
                         sound: 'default',
                     },
@@ -240,7 +242,7 @@ const Home = ({ navigation }) => {
                 //  SUNRISE START TIME
                 let sunriseStart = {
                     content: {
-                        title: 'Sunrise Start Time',
+                        title: 'Sunrise Start Time At ' + mosqueAddr,
                         body: 'Sunrise has started at ' + time[1][0] + '.',
                         sound: 'default',
                     },
@@ -255,7 +257,7 @@ const Home = ({ navigation }) => {
                 // ZUHR/Jummah START TIME
                 let zuhrJummahStart = {
                     content: {
-                        title: timeDifference(i, time[2][0]).date2Day == '5' ? 'Jummah (Khutbah) Start Time' : 'Zuhr Start Time',
+                        title: timeDifference(i, time[2][0]).date2Day == '5' ? 'Jummah (Khutbah) Start Time At ' + mosqueAddr : 'Zuhr Start Time At ' + mosqueAddr,
                         body: timeDifference(i, time[2][0]).date2Day == '5' ? 'Jummah (Khutbah)' : 'Zuhr' + ' has started at ' + time[2][0] + '.',
                         sound: 'default',
                     },
@@ -270,7 +272,7 @@ const Home = ({ navigation }) => {
                 //  ZUHR JAMAAT TIME
                 let zuhrJamaat = {
                     content: {
-                        title: 'Zuhr Jamaat Time',
+                        title: 'Zuhr Jamaat Time At ' + mosqueAddr,
                         body: 'Zuhr jamaat has started at ' + time[2][1] + '.',
                         sound: 'default',
                     },
@@ -291,7 +293,7 @@ const Home = ({ navigation }) => {
                 //  ASR START TIME
                 let asrStart = {
                     content: {
-                        title: 'Asr Start Time',
+                        title: 'Asr Start Time At ' + mosqueAddr,
                         body: 'Asr has started at ' + time[3][0] + '.',
                         sound: 'default',
                     },
@@ -306,7 +308,7 @@ const Home = ({ navigation }) => {
                 //  ASR JAMAAT TIME
                 let asrJamaat = {
                     content: {
-                        title: 'Asr Jamaat Time',
+                        title: 'Asr Jamaat Time At ' + mosqueAddr,
                         body: 'Asr jamaat has started at ' + time[3][1] + '.',
                         sound: 'default',
                     },
@@ -321,7 +323,7 @@ const Home = ({ navigation }) => {
                 //  MAGHRIB START TIME
                 let maghribStart = {
                     content: {
-                        title: 'Maghrib Start Time',
+                        title: 'Maghrib Start Time At ' + mosqueAddr,
                         body: 'Maghrib has started at ' + time[4][0] + '.',
                         sound: 'default',
                     },
@@ -336,7 +338,7 @@ const Home = ({ navigation }) => {
                 //  MAGHRIB JAMAAT TIME
                 let maghribJamaat = {
                     content: {
-                        title: 'Maghrib Jamaat Time',
+                        title: 'Maghrib Jamaat Time At ' + mosqueAddr,
                         body: 'Maghrib jamaat has started at ' + time[4][1] + '.',
                         sound: 'default',
                     },
@@ -351,7 +353,7 @@ const Home = ({ navigation }) => {
                 //  ISHA START TIME
                 let ishaStart = {
                     content: {
-                        title: 'Isha Start Time',
+                        title: 'Isha Start Time At ' + mosqueAddr,
                         body: 'Isha has started at ' + time[5][0] + '.',
                         sound: 'default',
                     },
@@ -366,7 +368,7 @@ const Home = ({ navigation }) => {
                 //  ISHA JAMAAT TIME
                 let ishaJamaat = {
                     content: {
-                        title: 'Isha Jamaat Time',
+                        title: 'Isha Jamaat Time At ' + mosqueAddr,
                         body: 'Isha jamaat has started at ' + time[5][1] + '.',
                         sound: 'default',
                     },
@@ -505,7 +507,7 @@ const Home = ({ navigation }) => {
 
 
         <SafeAreaView style={{width: Dimensions.get('window').width - 30}}>
-            <Text style={{fontSize: 15, color: 'white', fontWeight: 'bold', top: -10}}>Selected Mosque: <Text style={{fontSize: 15, color: 'red', fontWeight: 'normal', top: -10}}>{mosqueAddr == undefined ? "Click The Settings Icon To Select A Mosque" : mosqueAddr}</Text></Text>
+            <Text style={{fontSize: 15, color: 'white', fontWeight: 'bold', top: -10}}>Selected Mosque: <Text style={{fontSize: 15, color: 'red', fontWeight: 'normal', top: -10, fontWeight: 'bold', textDecorationLine: 'underline'}}>{mosqueAddr == undefined ? "Click The Settings Icon To Select A Mosque" : mosqueAddr}</Text></Text>
             <Text></Text>
             <Text style={{fontSize: 14, color: 'white'}}>{today}</Text>
             <Text style={{fontSize: 14, color: 'white'}}>{todayHijri}</Text>

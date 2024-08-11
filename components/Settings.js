@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Text, StyleSheet, ImageBackground, Image, SafeAreaView, Dimensions, Alert, TouchableOpacity } from 'react-native';
+import { Text, StyleSheet, ImageBackground, Image, SafeAreaView, Dimensions, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SelectList } from 'react-native-dropdown-select-list'
 import axios from 'axios';
@@ -16,19 +16,30 @@ const Settings = ({ navigation }) => {
     async function checkNotifPerms() {
         const { status } = await Permissions.requestPermissionsAsync(Permissions.NOTIFICATIONS);
         if (status !== 'granted') {
-            setNotifPerms('*Permission to schedule local notifications not granted');
+            setNotifPerms('*Notifications for prayer times will not work unless permission is granted for the app through settings');
         }
     }
 
     useEffect(() => {
         checkNotifPerms();
     }, [])
-    const cities = ['Bristol', 'London', 'Edinburgh', 'Bolton', 'Nelson', 'Derby', 'Trowbridge']
+    const cities = [
+        {key: 'Bristol', value: 'Bristol'},
+        {key: 'London', value: 'London'},
+        {key: 'Edinburgh', value: 'Edinburgh'},
+        {key: 'Bolton', value: 'Bolton'},
+        {key: 'Nelson', value: 'Nelson'},
+        {key: 'Derby', value: 'Derby'},
+        {key: 'Trowbridge', value: 'Trowbridge'},
+
+    ]
+    // const cities = ['Bristol', 'London', 'Edinburgh', 'Bolton', 'Nelson', 'Derby', 'Trowbridge']
 
     return (
         <ImageBackground style={styles.container} source={require("../assets/wallpaper.jpg")}>
             <SelectList
-                search={false}
+                search={true}
+                searchPlaceholder='Choose A City...'
                 placeholder='Choose A City...'
                 setSelected={(val) => setSelectedCity(val)} 
                 data={cities} 
@@ -82,7 +93,8 @@ const Settings = ({ navigation }) => {
 
             <SafeAreaView style={{display: disabledDropdown}}>
                 <SelectList
-                    search={false}
+                    search={true}
+                    searchPlaceholder='Choose A Mosque...'
                     placeholder='Choose A Mosque...'
                     setSelected={(val) => setSelectedMosque(val)}
                     data={mosques1} 
@@ -105,7 +117,8 @@ const Settings = ({ navigation }) => {
 
                         saveMosqueIndex();
 
-                        Alert.alert('Success', "The selected mosque is saved, click 'Back' to return")
+                        // Alert.alert('Success', "The selected mosque is saved")
+                        navigation.navigate('HomeStack')
                     }}
                 />
             </SafeAreaView>
